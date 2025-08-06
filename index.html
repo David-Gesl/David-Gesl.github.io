@@ -1,1 +1,66 @@
-<h4>David Gesl</h4>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>David Gesl | Software Developer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>David Gesl</h1>
+      <p>Software Developer | Aspiring Intern</p>
+    </header>
+
+    <nav>
+      <a href="#about">About</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <section id="about">
+      <h2>About Me</h2>
+      <p>
+        I'm a computer science and economcis student passionate about software
+        engineering, web development, and building cool things with code.
+        Currently seeking internship opportunities.
+      </p>
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+      <ul>
+        <li>
+          🌐 <strong>Plant Breeding Web App</strong>: Contributed to USDA ARS
+          project using .NET MVC and React.
+        </li>
+        <li>
+          ⚙️ <strong>RAG Search App</strong>: Retrieval-Augmented Generation
+          project for smarter document querying.
+        </li>
+        <li>
+          💬 <strong>Real Estate Club Site</strong>: Simple site for managing
+          and displaying club events. (In progress)
+        </li>
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contact</h2>
+      <form onsubmit="handleSubmit(event)">
+        <input type="text" placeholder="Your Name" required />
+        <input type="email" placeholder="Your Email" required />
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send</button>
+      </form>
+      <p id="form-response" class="hidden">
+        Thanks! This doesn't actually send, but it looks nice 🙂
+      </p>
+    </section>
+
+    <footer>
+      <p>&copy; 2025 David Gesl</p>
+    </footer>
+
+  </body>
+</html>
