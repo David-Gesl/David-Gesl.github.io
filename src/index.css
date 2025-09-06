@@ -1,2 +1,10 @@
 @import "tailwindcss";
 
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    @apply bg-sky-50 text-black;
+}
