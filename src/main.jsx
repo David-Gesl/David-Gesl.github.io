@@ -1,5 +1,9 @@
+
+// Node modules
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+
+// Components
 import './index.css'
 import App from './App.jsx'
 
