@@ -1,7 +1,12 @@
+// Node modules 
+import { useState } from "react"
+
 // Components
 import Navbar from "./Navbar"
 
 const Header = () => {
+    const [navOpen, setNavOpen] = useState(false);
+
 return (
     // Fixed header
         <header className="fixed top-0 left-0 w-full h-20 bg-white flex items-center z-40
@@ -12,19 +17,24 @@ return (
                 <h1>Hello world</h1>
 
                 <div className="relative md:justify-self-center">
-                    <button className="menu-btn md:hidden" onClick={null}
+                    <button className="menu-btn md:hidden" 
+                            onClick={ () => setNavOpen((prev) => !prev)}
                     >
                         <span className="material-symbols-rounded">
-                            menu
+                            {navOpen ? 'close' : 'menu'}
                         </span>
 
                     </button>
 
-                    <Navbar />
+                    <Navbar navOpen={navOpen}/>
                 </div>
 
-                <a href="#contact" className="">Contact Me</a>
-
+                <a href="#contact" 
+                   className="btn btn-secondary max-md:hidden
+                   md:justify-self-end"
+                
+                >
+                    Contact Me</a>
 
             </div>
         </header>

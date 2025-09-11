@@ -1,10 +1,10 @@
-
+// Componenets
+import LottiePlayer from './components/LottiePlayer.jsx'
+import Header from "./components/Header.jsx"
 
 const app = () => {
     return (
-        <div>
-            <h1>Hello</h1>
-        </div>
+        <Header />
     )
 }
 
