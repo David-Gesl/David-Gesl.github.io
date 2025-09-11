@@ -44,7 +44,7 @@ body {
     }
 
     .nav-link.active {
-        @apply bg-zinc-200/50 duration-500;
+        @apply bg-zinc-200/50 duration-500 rounded-2xl;
     }
 
     .navbar .active-box {
