@@ -1,6 +1,5 @@
 import React from 'react'
 
-
 // Componenets 
 import LottiePlayer from './LottiePlayer'
 import { ButtonPrimary, ButtonOutline } from './Button'
@@ -14,21 +13,7 @@ const Hero = () => {
             <div>
                 <div className='flex items-center gap-3'>
                     <figure className='img-box w-9 h-9 rounded-lg '>
-                        <img src="" alt="" />
-                        {/* Insert lottie player componnent here insteaed of the image
-                        Set the width and the height to 40 eac. Give the class img-cover  */}
-                            {/* const containerRef = useRef(null)
-
-                            // ref to hold the loaded animation instance so we can call play()/pause()/destroy()
-                            const animRef = useRef(null)
-                            animRef.current = lottie.loadAnimation({
-                            container: containerRef.current, // element to render into
-                            renderer: 'svg',                 // render as inline SVG
-                            loop: true,
-                            autoplay: true,
-                            path: './BoyStudyingScience.json' // path to the animation JSON (adjust as needed)
-                            }) */}
-                            {/* LottiePlayer()? */}
+                        <LottiePlayer className="w-9 h-9" />
                     </figure>
 
                     <div className='flex items-center gap-1.5 text-zinc-400 text-sm tracking-wide '>
@@ -59,7 +44,7 @@ const Hero = () => {
 
             <div className='hidden lg:block '>
                 <figure className='w-full max-w-[480px] ml-auto bg-gradient-to-t from-sky-400 via-25% via-sky-400/40 to-65% rounded-[60px] overflow-hidden '>
-                    <img src="~/BoyStudyingScience.json" width={656} height={800} alt="" className='w-full' />
+                    <LottiePlayer className="w-full h-[480px]" />
                 </figure>
             </div>
 
