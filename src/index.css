@@ -34,7 +34,7 @@ body {
 
 .headline-1 {
     @apply max-w-max;
-    background: -webkit-linear-gradient(0deg, #fafafa, #a1a1aa);
+    background: -webkit-linear-gradient(0deg, #94e3aa, #243138);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
