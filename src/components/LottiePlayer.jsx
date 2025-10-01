@@ -1,72 +1,121 @@
-import React, { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
+import animationData from '../assets/BoyStudyingScience.json'  // Bundled animation JSON
 
-export default function LottiePlayer() {
-  // ref to the DOM container where lottie will render the SVG     * @see {@link https://react.dev/reference/react/useRef}
+/*
+  LottiePlayer
+  Renders a Lottie animation (using the global window.lottie loaded via a CDN script in index.html)
+  and lets the user click the animation to toggle play / pause.
+  
+  Props:
+    className : Tailwind (or other) classes that MUST include explicit width & height
+    loop      : Whether the animation loops
+    autoplay  : Whether it starts playing immediately
+    showForm  : Optional demo form to show how local state can control extra UI
+*/
+export default function LottiePlayer({
+  className = 'w-64 h-64',
+  loop = true,
+  autoplay = true,
+  showForm = false
+}) {
+  // Holds the DOM node that Lottie will render into
   const containerRef = useRef(null)
 
-  // ref to hold the loaded animation instance so we can call play()/pause()/destroy()
+  // Stores the Lottie animation instance so we can call play(), pause(), destroy()
   const animRef = useRef(null)
 
-  // component state to track whether the animation is currently playing
-    // useState(true) Initializes the state with true
-    // isPlaying      Variable to track the current state value (is animation playing? True by deafult )
-    // setIsPlaying   Functoin to change isPlaying state value
+  // Tracks whether we consider the animation currently playing (for UI text + toggle)
+  const [isPlaying, setIsPlaying] = useState(autoplay)
 
-  const [isPlaying, setIsPlaying] = useState(true)
-  
-  // component state that controls showing the "Submitted!" response
+  // Demo state for the optional form submission feedback
   const [showResponse, setShowResponse] = useState(false)
 
-  // Effect: load the Lottie animation when the component mounts
+  /*
+    Effect: (re)initialize the animation whenever loop or autoplay props change.
+    - Grabs window.lottie (provided by CDN script)
+    - Destroys any previous instance to avoid duplicates (important in React StrictMode)
+    - Creates a new animation using the imported animationData
+    Cleanup: destroys the animation on unmount or before re-init.
+  */
   useEffect(() => {
-    if (!containerRef.current) return
+    const container = containerRef.current
+    if (!container) return
 
-    // loadAnimation returns an animation instance we keep in animRef
+    const lottie = window.lottie
+    if (!lottie) {
+      console.warn('[LottiePlayer] window.lottie not found. Ensure CDN script loads before main.jsx.')
+      return
+    }
+
+    // Destroy an existing animation before creating a new one
+    if (animRef.current) {
+      animRef.current.destroy()
+      animRef.current = null
+    }
+
+    // Initialize the animation
     animRef.current = lottie.loadAnimation({
-      container: containerRef.current, // element to render into
-      renderer: 'svg',                 // render as inline SVG
-      loop: true,
-      autoplay: true,
-      path: './BoyStudyingScience.json' // path to the animation JSON (adjust as needed)
+      container,
+      renderer: 'svg',
+      loop,
+      autoplay,
+      animationData
     })
 
-    // cleanup: destroy the animation when the component unmounts
-    return () => animRef.current?.destroy()
-  }, [])
+    // Sync internal state with autoplay prop
+    setIsPlaying(autoplay)
 
-  // Toggle play/pause using the animation instance API
-  function togglePlay() {
-    if (!animRef.current) return
-    if (isPlaying) animRef.current.pause()
-    else animRef.current.play()
-    setIsPlaying(!isPlaying)
+    // Cleanup
+    return () => {
+      animRef.current?.destroy()
+      animRef.current = null
+    }
+  }, [loop, autoplay])
+
+  // Click handler: toggles between play and pause using Lottie instance methods
+  const togglePlay = () => {
+    const anim = animRef.current
+    if (!anim) return
+    if (isPlaying) anim.pause()
+    else anim.play()
+    setIsPlaying(prev => !prev)
   }
 
-  // Handle the form submit — set state to reveal the response message
-  function handleSubmit(e) {
+  // Demo form submit handler: prevents page reload and shows a temporary message
+  const handleSubmit = (e) => {
     e.preventDefault()
     setShowResponse(true)
   }
 
-  // Render the animation container and a simple form with a submit button.
-  // The container uses onClick to toggle play/pause instead of adding a DOM event listener.
   return (
     <div className="space-y-4">
+      {/* Animation container (clickable for play/pause) */}
       <div
         ref={containerRef}
-        id="lottie-animation"
-        className="w-64 h-64 mx-auto cursor-pointer"
         onClick={togglePlay}
-        aria-label="Lottie animation"
+        className={`cursor-pointer select-none ${className}`}
+        aria-label="Lottie animation (click to toggle play/pause)"
+        role="button"
       />
-      <form onSubmit={handleSubmit} className="text-center">
-        <button type="submit" className="px-4 py-2 bg-blue-600 text-white rounded">
-          Submit test
-        </button>
-        <div id="form-response" className={`${showResponse ? '' : 'hidden'} mt-2 text-green-600`}>
-          Submitted!
-        </div>
-      </form>
+      {/* Simple status text below animation */}
+      <div className="text-center text-xs text-zinc-500">
+        {isPlaying ? 'Playing (click to pause)' : 'Paused (click to play)'}
+      </div>
+
+      {/* Optional demo form (only rendered when showForm=true) */}
+      {showForm && (
+        <form onSubmit={handleSubmit} className="text-center">
+          <button
+            type="submit"
+            className="px-4 py-2 rounded bg-blue-600 text-white text-sm hover:bg-blue-500 active:scale-95 transition"
+          >
+            Submit test
+          </button>
+          <div className={`mt-2 text-green-600 text-sm ${showResponse ? '' : 'hidden'}`}>
+            Submitted!
+          </div>
+        </form>
+      )}
     </div>
   )
 }
