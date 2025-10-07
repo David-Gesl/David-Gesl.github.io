@@ -3,6 +3,8 @@ import { useState } from "react"
 
 // Components
 import Navbar from "./Navbar"
+// Import resume asset (Vite will bundle and return a URL)
+import resumePdf from "../assets/David Gesl Resume.pdf"
 
 const Header = () => {
     const [navOpen, setNavOpen] = useState(false);
@@ -29,12 +31,16 @@ return (
                     <Navbar navOpen={navOpen}/>
                 </div>
 
-                <a href="#contact" 
-                   className="btn btn-secondary max-md:hidden
-                   md:justify-self-end"
-                
+                {/* Resume button */}
+                <a
+                   href={resumePdf}
+                   target="_blank"
+                   rel="noreferrer"
+                   className="btn btn-secondary max-md:hidden md:justify-self-end"
                 >
-                    Contact Me</a>
+                  Resume
+                  <span className="material-symbols-rounded" aria-hidden="true">open_in_new</span>
+                </a>
 
             </div>
         </header>
