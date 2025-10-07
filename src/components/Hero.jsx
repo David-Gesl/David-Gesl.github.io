@@ -1,6 +1,7 @@
 // Componenets 
 import LottiePlayer from './LottiePlayer'
 import { ButtonPrimary, ButtonOutline } from './Button'
+import resumePdf from "../assets/David Gesl Resume.pdf"
  
 const Hero = () => {
   return (
@@ -16,7 +17,7 @@ const Hero = () => {
 
                     <div className='flex items-center gap-1.5 text-zinc-400 text-sm tracking-wide '>
                         <span className='relative w-2 h-2 rounded-full bg-emerald-400'>
-                            <span className='absolute inset-0 rounded-full bg-emerald-400 animage-ping'></span>
+                            <span className='absolute inset-0 rounded-full bg-emerald-400 animate-ping'></span>
                         </span>
 
                         Available for Work
@@ -28,8 +29,10 @@ const Hero = () => {
                 
                 <div className='flex items-center gap-3'>
                     <ButtonPrimary 
+                        href={resumePdf}
+                        target="_blank"
                         label="Download Resume"
-                        icon="download"     //chekc later. Might not be imported properly
+                        icon="download"
                     />
 
                     <ButtonOutline
