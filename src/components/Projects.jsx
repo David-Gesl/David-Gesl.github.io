@@ -16,7 +16,7 @@ const works = [
     projectLink: 'https://devpost.com/software/getthedamclass'
   },
   {
-    imgSrc: '/images/images.jpg',
+    imgSrc: '/images/realestate.jpg',
     title: 'Real Estate Club Website',
     tags: ['IN PROGRESS', 'React', 'Tailwind', 'Firebase'],
     projectLink: ''
