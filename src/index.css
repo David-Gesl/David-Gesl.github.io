@@ -101,9 +101,9 @@ body {
         @apply pr-3
     }
 
-    /* Buttons currently not appearing */
+
     .btn-primary {
-        @apply h-11 bg-sky-400 text-zinc-950 hover:bg-sky-300 active:bg-sky-400
+        @apply h-11 bg-emerald-400 text-zinc-950 hover:bg-emerald-300 active:bg-emerald-400;
     }
 
     .btn-outline {
