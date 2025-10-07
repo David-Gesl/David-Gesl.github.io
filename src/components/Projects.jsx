@@ -35,7 +35,7 @@ const works = [
   },
 ];
 
-const WorkExperience = () => {
+const Projects = () => {
   return (
     <section id="work" className="section">
       <div className="container">
@@ -60,4 +60,4 @@ const WorkExperience = () => {
   )
 }
 
-export default WorkExperience
+export default Projects
