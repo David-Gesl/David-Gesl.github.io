@@ -7,7 +7,7 @@ const quotes = [
 
 const Quotes = () => {
   return (
-    <section id="quotes" className="section">
+    <section id="quotes" className="section pb-24">
       <div className="container">
         <h2 className="headline-1 mb-6">My Favorite Quotes</h2>
 
