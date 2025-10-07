@@ -1,5 +1,3 @@
-import React from 'react'
-
 // Componenets 
 import LottiePlayer from './LottiePlayer'
 import { ButtonPrimary, ButtonOutline } from './Button'
