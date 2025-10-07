@@ -5,6 +5,7 @@ import Hero from './components/hero.jsx'
 import About from './components/About.jsx'
 import Projects from './components/Projects.jsx'
 import Experience from './components/Experience.jsx'
+import Quotes from './components/Quotes.jsx'
 
 const app = () => {
     return (
@@ -13,8 +14,9 @@ const app = () => {
             <main>
                 <Hero />
                 <About />
-                <Experience />   {/* new section */}
+                <Experience />
                 <Projects />
+                <Quotes />
             </main>
         </>
     )
