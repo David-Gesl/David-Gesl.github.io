@@ -8,7 +8,7 @@ const ProjectCard = ({
     classes
 }) => {
   return (
-    <div className={"relative p-4 rounded-2xl bg-zince-800 hover:bg-zinc-700/50 active:bg-zinc-700/60 ring-1 ring-inset ring-zinc-50/5 transition-colors " + classes}>
+    <div className={"relative p-4 rounded-2xl bg-white hover:bg-zinc-50 ring-1 ring-zinc-200 hover:ring-zinc-300 transition-colors transform hover:scale-[1.01] " + (classes || "")}>
         <figure className="img-box aspect-square rounded-lg mb-4">
             <img src={imgSrc} alt={title} loading="lazy" className="img-cover" />
         </figure>
@@ -21,7 +21,7 @@ const ProjectCard = ({
 
                 <div className="flex flex-wrap items-center gap-2">
                     {tags.map((label, key) => (
-                        <span key={key} className="h-8 text-sm text-zinc-400 bg-zinc-50/5 grid items-center px-3 rounded-lg">
+                        <span key={key} className="h-8 text-sm text-zinc-600 bg-zinc-100 grid items-center px-3 rounded-lg">
                             {label}
                         </span>
                     ))}
@@ -40,7 +40,7 @@ const ProjectCard = ({
   )
 }
 
-ProjectCard.propTypes = {
+ProjectCard.PropTypes = {
     imgSrc: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     tags: PropTypes.array.isRequired,
