@@ -3,7 +3,7 @@ import LottiePlayer from './components/LottiePlayer.jsx'       //TODO Remove thi
 import Header from "./components/Header.jsx"
 import Hero from './components/hero.jsx'
 import About from './components/About.jsx'
-import Work from './components/Work.jsx'
+import WorkExperience from './components/WorkExperience.jsx'
 
 const app = () => {
     return (
@@ -12,6 +12,7 @@ const app = () => {
             <main>
                 <Hero />
                 <About />
+                <WorkExperience />
             </main>
         </>
     )
