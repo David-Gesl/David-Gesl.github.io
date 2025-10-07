@@ -13,9 +13,9 @@ return (
         bg-gradient-to-b from-green-400 to-green-200/0">
             
             <div className="max-w-screen-2xl w-full mx-auto px-4 
-            flex justify-between items-center md:px-6 md:grid-cols-[1fr,3fr,1fr]">
+            flex justify-center items-center md:px-6">
 
-                <div className="relative md:justify-self-center">
+                <div className="relative w-full flex justify-end md:justify-center">
                     <button className="menu-btn md:hidden" 
                             onClick={ () => setNavOpen((prev) => !prev)}
                     >
