@@ -1,0 +1,117 @@
+@import "tailwindcss";
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    @apply bg-sky-50 text-black;
+    height: 200vh;
+}
+
+/* Utilities */
+.material-symbols-rounded {
+    @apply w-[1em] h-[1em] overflow-hidden;
+    font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+.container {
+    @apply px-4 mx-auto lg:px-8 xl:max-w-6xl
+}
+
+.img-box {
+    @apply bg-zinc-700 overflow-hidden
+}
+
+.img-cover {
+    @apply w-full h-full object-cover
+}
+
+.section {
+    @apply pt-20  lg:pt-32 
+}
+/* Typography */
+
+.headline-1 {
+    @apply max-w-max;
+    background: -webkit-linear-gradient(0deg, #94e3aa, #243138);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.headline-1 {
+    @apply text-5xl leading-tight font-semibold lg:text-[55px] lg:leading-[1.15]
+}
+
+.title-1 {
+    @apply text-[22px] font-normal
+}
+
+
+
+/* Group custom component classes so Tailwind can order them correctly */
+@layer components {
+    .menu-btn {
+        @apply w-10 h-10 grid place-items-center bg-zinc-200/10 rounded-xl
+               ring-inset ring-1 ring-zinc-50/[0.02] backdrop-blur-2xl
+               hover:bg-zinc-50/15 transition-transform active:scale-95;
+    }
+
+    .navbar {
+        @apply absolute top-full mt-2 right-0 min-w-40 p-2
+               bg-white/95 shadow-xl rounded-2xl ring-inset ring-1 ring-zinc-200
+               z-50 scale-90 blur-sm opacity-0 invisible
+               transition-[opacity,transform,filter] md:static
+               md:flex md:items-center md:mt-0 md:opacity-100
+               md:blur-none md:visible md:scale-100
+               backdrop-blur-2xl;
+    }
+
+    .navbar.active {
+        @apply opacity-100 scale-100 blur-none visible;
+    }
+
+    .nav-link {
+        @apply grid items-center h-9 px-4 text-sm font-medium
+               tracking-wide text-zinc-700 hover:text-zinc-900
+               transition-colors;
+    }
+
+    .nav-link.active {
+        @apply bg-zinc-200/50 duration-500 rounded-2xl;
+    }
+
+    .navbar .active-box {
+        @apply absolute bg-zinc-50 rounded-lg -z-10 transition-[top,left] duration-500;
+    }
+
+    .btn {
+        @apply max-w-max h-9 flex items-center gap-2 px-4 rounded-xl font-medium
+               text-sm ring-1 ring-zinc-50/5 ring-inset transition-[background-color];
+    }
+
+    .btn-secondary {
+        @apply bg-zinc-50 text-zinc-900 active:bg-zinc-50/80;
+    }
+
+    .btn .material-symbols-rounded {
+        @apply text-[18px]
+    }
+
+    .btn:has( .material-symbols-rounded) {
+        @apply pr-3
+    }
+
+
+    .btn-primary {
+        @apply h-11 bg-emerald-400 text-zinc-950 hover:bg-emerald-300 active:bg-emerald-400;
+    }
+
+    .btn-outline {
+            height: 2.75rem; /* h-11 */
+            background-color: #9f9fa9; 
+            transition: background-color 0.2s;
+        }
+    .btn-outline:hover {
+            background-color: #ccccd2;
+        }
+}
