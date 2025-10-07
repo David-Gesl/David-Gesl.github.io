@@ -35,7 +35,6 @@ import PropTypes from "prop-types";
             { label: "Experience", link: "#experience", className: "nav-link" },
             { label: "Projects", link: "#projects", className: "nav-link" },
             { label: "Reviews", link: "#reviews", className: "nav-link" },
-            { label: "Contact", link: "#contact", className: "nav-link md:hidden" },
         ];
 
         return (
