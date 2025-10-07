@@ -4,6 +4,7 @@ import Header from "./components/Header.jsx"
 import Hero from './components/hero.jsx'
 import About from './components/About.jsx'
 import Projects from './components/Projects.jsx'
+import Experience from './components/Experience.jsx'
 
 const app = () => {
     return (
@@ -12,6 +13,7 @@ const app = () => {
             <main>
                 <Hero />
                 <About />
+                <Experience />   {/* new section */}
                 <Projects />
             </main>
         </>
